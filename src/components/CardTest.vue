@@ -1,40 +1,46 @@
 <template>
-    <section class="card-main" id="cardMain">
-        <div class="card-header">
-            <div class="title">
-                <h2>막시 Maxi Ruti</h2>
-                <h2>Web dev</h2>
+    <div class="wrapper">
+        <section class="card-main" id="cardMain">
+            <div class="card-header">
+                <div class="title">
+                    <h2>막시 Maxi Ruti</h2>
+                    <h2>Web dev</h2>
+                </div>
+                <div class="details">
+                    <h2>010 8073 0203</h2>
+                    <h2>maxi@nolgong.com</h2>
+                    <h2>070 4190 4420</h2>
+                </div>
             </div>
-            <div class="details">
-                <h2>010 8073 0203</h2>
-                <h2>maxi@nolgong.com</h2>
-                <h2>070 4190 4420</h2>
+            <h1></h1>
+            <!-- links -->
+            <div class="links">
+                <a
+                    class="link"
+                    target="_blank"
+                    href="https://maxi-ruti.netlify.app/"
+                >
+                    <i class="fa fa-brands fa-twitter"></i>
+                </a>
+                <a
+                    class="link"
+                    target="_blank"
+                    href="https://github.com/maxrpark"
+                >
+                    <i class="fa fa-brands fa-github"></i>
+                </a>
+                <a class="link" target="_blank" href="https://t.me/Max_Nolgong">
+                    <i class="fa a-brands fa-telegram"></i>
+                </a>
+                <a
+                    class="link"
+                    target="_blank"
+                    href="https://maxi-ruti.netlify.app/"
+                    ><i class="fa fa-solid fa-globe"></i
+                ></a>
             </div>
-        </div>
-        <h1></h1>
-        <!-- links -->
-        <div class="links">
-            <a
-                class="link"
-                target="_blank"
-                href="https://maxi-ruti.netlify.app/"
-            >
-                <i class="fa fa-brands fa-twitter"></i>
-            </a>
-            <a class="link" target="_blank" href="https://github.com/maxrpark">
-                <i class="fa fa-brands fa-github"></i>
-            </a>
-            <a class="link" target="_blank" href="https://t.me/Max_Nolgong">
-                <i class="fa a-brands fa-telegram"></i>
-            </a>
-            <a
-                class="link"
-                target="_blank"
-                href="https://maxi-ruti.netlify.app/"
-                ><i class="fa fa-solid fa-globe"></i
-            ></a>
-        </div>
-    </section>
+        </section>
+    </div>
 </template>
 
 <script>

@@ -1,22 +1,24 @@
 <template>
-    <div id="nav">
-        <router-link to="/">Home</router-link> |
-        <router-link :to="{ name: 'CardPage' }">About</router-link>
+    <div>
+        <div id="nav">
+            <router-link to="/">Home</router-link> |
+            <router-link :to="{ name: 'CardPage' }">card</router-link>
+        </div>
+        <router-view />
     </div>
-    <router-view />
 </template>
 
 <style>
 #app {
-    font-family: Avenir, Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
 }
 
 #nav {
     padding: 30px;
+    z-index: 2000;
 }
 
 #nav a {

@@ -1,7 +1,13 @@
 import { gsap } from "gsap";
-import { CSS3DObject } from "../libs/three.js-r132/examples/jsm/renderers/CSS3DRenderer";
+// import { CSS3DObject } from "../libs/three.js-r132/examples/jsm/renderers/CSS3DRenderer";
+import { CSS3DObject } from "three/examples/jsm/renderers/CSS3DRenderer";
+import { ref } from "vue";
+import { TextPlugin } from "gsap/TextPlugin";
+gsap.registerPlugin(TextPlugin);
 
 export const useMindArtCard = () => {
+    let showComponent = ref(false);
+    let mindarThree;
     const startFunctions = async () => {
         try {
             gsap.set(".link", { opacity: 0, zIndex: -1 });
@@ -15,16 +21,11 @@ export const useMindArtCard = () => {
                 })
                 .to(".link", { opacity: 1, y: 220, stagger: 0.3 })
                 .pause();
-
-            console.log(window.MINDAR.IMAGE);
-
-            const mindarThree = new window.MINDAR.IMAGE.MindARThree({
-                container: document.body,
-                // imageTargetSrc:
-                // "https://github.com/Maxigong/ar_card/blob/main/targetsTwo.mind",
-                // imageTargetSrc:
-                //     "https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.0.0/examples/image-tracking/assets/card-example/card.mind",
-                imageTargetSrc: "require('../targets/targetCard.mind')",
+            mindarThree = new window.MINDAR.IMAGE.MindARThree({
+                container: document.querySelector(".main"),
+                // container: document.body,
+                imageTargetSrc:
+                    "https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.0/examples/image-tracking/assets/card-example/card.mind",
             });
             const { renderer, camera, cssScene, cssRenderer } = mindarThree;
             const mainContainer = new CSS3DObject(
@@ -34,12 +35,16 @@ export const useMindArtCard = () => {
             const cssAnchor = mindarThree.addCSSAnchor(0);
             cssAnchor.group.add(mainContainer);
             cssAnchor.onTargetFound = () => {
+                console.log("found");
+
                 tl.play();
             };
             cssAnchor.onTargetLost = () => {
                 tl.reverse();
             };
+
             await mindarThree.start();
+
             renderer.setAnimationLoop(() => {
                 cssRenderer.render(cssScene, camera);
             });
@@ -48,5 +53,13 @@ export const useMindArtCard = () => {
         }
     };
 
-    return { startFunctions };
+    const stopFunc = () => {
+        mindarThree.stop();
+        window.removeEventListener("resize", () => mindarThree);
+        document
+            .querySelectorAll(".mindar-ui-overlay")
+            .forEach((e) => e.remove());
+    };
+
+    return { startFunctions, showComponent, stopFunc };
 };

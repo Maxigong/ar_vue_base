@@ -4,9 +4,6 @@
     </div>
 </template>
 
-<script>
-export default {
-    name: "Home",
-    components: {},
-};
-</script>
+<script setup></script>
+
+<style scoped></style>
